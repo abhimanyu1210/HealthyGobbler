@@ -1,0 +1,131 @@
+﻿<div id="mealDetailsId" class="container row alldetails">
+    <div class="col-md-4 well mealDetailsCard">
+        <div class="mealName">
+            <h2>
+                <span class="glyphicon glyphicon-cutlery"></span> {{Meal.mealName}}
+            </h2>
+            <div>&nbsp;</div>
+            <button ng-click="likeMeal()" ng-hide="MyLike" class="btn btn-info">
+                <span class="glyphicon glyphicon-heart"></span>&nbsp;Like Meal
+            </button>
+            <button ng-click="unLikeMeal()" ng-show="MyLike" id="likeBtn" class="btn btn-danger">
+                <span class="glyphicon glyphicon-thumbs-down"></span>&nbsp;Unlike Meal
+            </button>
+            <div>&nbsp;</div>
+            <p id="howManyComments">{{totalComments}} user comments&nbsp;<span id="commentsScrollTo" class="glyphicon glyphicon-comment"></span></p>
+            
+            <p id="howManyLikes">{{NumberOfLikes}} people liked this meal&nbsp;<span style="color:red" class="glyphicon glyphicon-heart"></span></p>
+        </div>
+
+
+        <div class="mealImageAndContents">
+            <img class="mealImage" src="{{Meal.image}}" />    
+                    
+            <table class="mealContents table table-striped">
+                <thead>
+                    <tr>
+                        <th><h3>Contents</h3></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="content in Meal.contents track by $index">
+                        <td>{{content}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-md-4 well calorieAndLoggingCard">
+        <div class="calories">
+            <h2><span class="glyphicon glyphicon-scale"></span> Calories</h2>
+        </div>
+        <div class="calorieVal">
+            <label>{{Meal.calories}}</label>
+        </div>
+
+        <form>
+            <div class="datePicker">
+                <label for="date">When did you have this meal?</label>
+                <input id="dateInput" ng-model="inputDate" type="date" class="form-control" />
+            </div>
+            <div ng-show="dateErr" class="dateErr">
+                <p>{{dateErr}}</p>
+            </div>
+            <div class="loggingButton">
+                <button ng-click="logCalories(inputDate)" class="btn btn-warning">
+                    <span class="glyphicon glyphicon-cutlery"></span>&nbsp; Log Meal
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="commentsSecId" class="container row well commentsAndLikeSection">
+    <div class="commentSection">
+        <h2><span style="color:green" class="glyphicon glyphicon-comment"></span>&nbsp;Comments</h2>
+    </div>
+
+    <div>&nbsp;</div>
+
+    <div class="container displayCommentsSection" ng-hide="Guest">
+        <table class="table table-condensed table-hover">
+            <thead>
+                <tr>
+                    <th>Comments</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="eachComment in Comments" ng-show="Comments">
+                    <td class="commentText">
+                        <div id="userNameHolder">
+                            <a ng-click="openOtherUserDialog(eachComment.username)" href=""><span class=" glyphicon glyphicon-user"></span> {{eachComment.username}}</a>
+                        </div>
+                        <div id="commentHolder">
+                            {{eachComment.comment}}
+                        </div>
+                        <div class="commentDate">
+                            on&nbsp;{{eachComment.creationDate  | date:"MM/dd/yyyy @ h:mma"}}
+                        </div>
+                    </td>
+                    <td ng-show="User.username == eachComment.username">
+                        <button ng-click="deleteComment(eachComment)" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove"></span>&nbsp;Remove
+                        </button>
+                    </td>
+                </tr>
+                <tr ng-hide="Comments">
+                    <td class="commentTextFirst">
+                        Be the first to comment
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="container displayCommentsSectionGuest" ng-show="Guest">
+        <div class="well loginToSeeComments">
+            <span class="glyphicon glyphicon-lock"></span>&nbsp;<label>Login or Register to see comments</label>&nbsp;<span class="glyphicon glyphicon-lock"></span>
+        </div>
+    </div>
+
+    <div class="row commentInputSection">
+        <form>
+            <div class="col-md-10">
+                <input ng-hide="Guest" ng-model="newComment" type="text" placeholder="Leave a comment" class="form-control" />
+                <input ng-show="Guest" readonly ng-model="newComment" type="text" placeholder="Leave a comment" class="form-control" />
+            </div>
+            <div class="col-md-2">
+                <button ng-hide="Guest" ng-click="postComment(newComment)" class="btn btn-warning">
+                    <span class="glyphicon glyphicon-comment"></span>&nbsp;Comment
+                </button>
+                <button disabled ng-show="Guest" ng-click="postComment(newComment)" class="btn btn-warning">
+                    <span class="glyphicon glyphicon-comment"></span>&nbsp;Comment
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+

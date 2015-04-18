@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div class="well registerClass">
+            
+            <h2><span class="glyphicon glyphicon-user"></span>&nbsp;Member Registration</h2>
+            <hr />
+            <div class="row btnClass">
+                <button ng-click="goBackToLogin();" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-backward"></span>&nbsp;Back
+                </button>
+            </div>
+            <form>
+                <label for="firstname">First Name:</label>
+                <input ng-model="User.firstname" class="form-control" id="firstname" type="text" placeholder="Enter your first name here." required/>
+
+                <label for="lastname">Last Name:</label>
+                <input ng-model="User.lastname" class="form-control" id="lastname" type="text" placeholder="Enter your last name here." required />
+
+                <label for="email">Email:</label>
+                <input ng-model="User.email" class="form-control" id="email" type="email" placeholder="Enter your email here." required />
+
+                <label for="age">Age(Years):</label>
+                <input ng-model="User.age" class="form-control" id="age" type="number" min="3" max="100" placeholder="Enter your age here." required />
+
+                <label for="height_feet">Height(Feet And Inches):</label><br />
+                <input ng-model="User.heightfeet" class="form-control" id="height_feet" type="number" min="0" max="7" placeholder="Feet" required /> <br />
+                <input ng-model="User.heightinches" class="form-control" id="height_inches" type="number" min="0" max="11" placeholder="Inches" required />
+                
+                <label for="weight_kgs">Weight(kgs):</label><br />
+                <input ng-model="User.weight" class="form-control" id="weight_kgs" type="number" min="0" max="200" placeholder="Kgs" required />
+
+                <label for="lifestyle">Physical Activity Level:</label><br />
+                <select name="lifestyle" id="lifestyle">
+                    <option selected="selected">Sedentary</option>
+                    <option>Lightly Active</option>
+                    <option>Moderately Active</option>
+                    <option>Highly Active</option>
+                </select><br />
+
+                <label id="usernameLabel" for="username">Username:</label>
+                <input ng-model="User.username" class="form-control" id="username" type="text" placeholder="Enter your desired username." required />
+
+                <p>
+                    Password Requirements:
+                    <ul class="passwordReq">
+                        <li>Atleast 5 characters long</li>
+                        <li>Can only be Alpha-numeric (Eg. mypassword9, mypassword)</li>
+                        <li>No special characters allowed (Eg. -, *, %, $)</li>
+                    </ul>
+                </p>
+
+
+                <label id="pwdLabel" for="pwd">Password:</label>
+                <input ng-model="User.password" class="form-control" id="pwd" type="password" placeholder="Enter your desired password." required />
+
+                <label for="confpwd">Confirm Password:</label>
+                <input class="form-control" id="confpwd" type="password" placeholder="Confirm your password here." required />
+
+                <div class="row btnClass">
+                    <button ng-click="registerUser(User)" class="btn btn-success">
+                        <span class="glyphicon glyphicon-user"></span>&nbsp;Register
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </body>
+</html>

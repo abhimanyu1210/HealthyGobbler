@@ -1,0 +1,235 @@
+﻿html{
+    height:100%;
+}
+
+well{
+    margin:10px;
+}
+
+body{
+    background:url(../images/background.jpg) fixed center;
+    background-size:cover;
+    height:100%;
+}
+
+a{
+    text-decoration:none !important;
+}
+
+.navbar-custom{
+    background-color:#d8dfea;
+    opacity:0.75;
+    transition: opacity ease-in 0.5s;
+}
+
+#aboutDivMainId{
+    margin-top:80px;
+    opacity:0.93;
+    font-family:'Arial Rounded MT';
+}
+
+.navbar-right-custom{
+    font-family:'Arial Rounded MT';
+    margin-right:30px;
+}
+
+.navlinks{
+    font-size:15px;
+    margin-right:5px;
+    margin-top:3px;
+    color:black;
+    transition:transform ease-in-out 0.3s;
+    background-color:Highlight;
+    border-radius:50px;
+}
+
+
+.navlinks:hover{
+    transform:translateY(5px);
+
+}
+
+
+.appname{
+    background-color:transparent;
+    height:80px;
+    width:300px;
+}
+
+
+#searchBtn{
+    font-family:'Arial Rounded MT';
+    font-size:30px;
+    color:ghostwhite;
+    display:block;
+    margin:10px auto;
+    height:150px;
+    border-radius:50px;
+    opacity:0.7;
+    -webkit-animation:animateMe 0.5s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes animateMe{
+    0%   {opacity:0.3}
+    100% {opacity:1}
+}
+
+#searchBtn:hover{
+    opacity:1;
+}
+
+.searchDiv{
+    text-align:center;
+}
+
+.searchDiv input{
+    font-family:'Arial Rounded MT';
+}
+
+.appLogoImg{
+    height:60px;
+    width:60px;
+}
+
+
+.loginBtn{
+    font-family:'Arial Rounded MT';
+    font-size:20px;
+    margin:7px;
+    transition:transform ease-in-out 0.3s;
+    border-radius:50px;
+}
+
+.loginBtn:hover{
+    transform:translateY(5px);
+}
+
+.slogan{
+    padding-top:150px;
+    margin-top:80px;
+    background-color:transparent;
+}
+
+.slogan label{
+    font-size:70px;
+    font-family:'Arial Rounded MT';
+    color:white;
+    opacity:0.8;    
+    display:block;
+    margin:auto;
+    text-align:center;
+    color:lightgoldenrodyellow;
+}
+
+#aboutDivId{
+    margin-top:80px;
+    opacity:0.7;
+}
+
+.aboutHeader{
+    font-size:50px;
+    font-family:'Arial Rounded MT';
+    display:block;
+    margin:auto;
+    text-align:center;
+    padding:10px;
+}
+
+#aboutDivId p{
+    font-family:'Arial Rounded MT';
+    font-size:15px;
+    display:block;
+    width: 600px;
+    margin-top:20px;
+}
+
+#aboutDivId li{
+    font-family:'Arial Rounded MT';
+    font-size:15px;
+}
+
+.abt_healthyIcon{
+    display:block;
+    float:left;
+    opacity:0.9;
+    width:400px;
+    height:400px;
+    margin-right:20px;
+    border-radius:200px;
+}
+
+.abt_unhealthyIcon{
+    display:block;
+    opacity:0.9;
+    width:400px;
+    height:400px;
+    float:right;
+    margin-bottom:10px;
+}
+
+#contactMainDiv{
+    background-color:transparent;
+    margin-top:80px;
+    opacity:0.9;
+}
+
+.addressDiv{
+    margin-bottom:20px;
+}
+
+.addressDiv p{
+    font-family:'Arial Rounded MT';
+    font-size:20px;
+    margin:auto;
+    margin-top:20px;
+    text-align:center;
+}
+
+.mapLocation{
+    margin:auto;
+    margin-top:20px;
+    border:3px solid grey;
+}
+
+#logoImg{
+    height:56px;
+}
+
+footer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  height:75px;
+  opacity:0.5;
+}
+
+#footerImage{
+    height:75px;
+}
+
+#footerImage {
+    visibility:hidden;
+}
+#footer:hover #footerImage {
+    visibility:visible;
+}
+
+@media screen and (max-width: 800px){
+    #whyimp {
+        width:400px;
+    }
+    .mapLocation{
+        width:250px;
+        height:150px;
+    }
+    .abt_unhealthyIcon{
+        width:250px;
+        height:250px;
+    }
+    .abt_healthyIcon{
+        width:250px;
+        height:250px;
+    }
+}

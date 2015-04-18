@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Healthy Gobbler</title>
+        <script src="../js/angular.js" type="text/javascript"></script>
+        <script src="../js/angular-route.js" type="text/javascript"></script>
+        <script src="../js/angular-animate.js" type="text/javascript"></script>
+        <script src="../js/jquery-2.1.3.js" type="text/javascript"></script>
+        <script src="../js/jquery-ui.js" type="text/javascript"></script>
+        <script src="../js/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap.js" type="text/javascript"></script>
+        <script src="../js/ngDialog.js" type="text/javascript"></script>
+        <script src="healthyGobblerApp.js" type="text/javascript"></script>
+        <script src="login/login.js" type="text/javascript"></script>
+        <script src="register/registeruser.js" type="text/javascript"></script>
+        <script src="profile/userprofile.js" type="text/javascript"></script>
+        <script src="calorietracker/calorietracker.js" type="text/javascript"></script>
+        <script src="mealdetails/mealdetails.js" type="text/javascript"></script>
+        <script src="exercisetracker/exercisetracker.js" type="text/javascript"></script>
+        <script src="favorites/favorites.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="../css/bootstrap.css" />
+        <link rel="stylesheet" href="../css/jquery-ui.css" />
+        <link rel="stylesheet" href="css/userentry.css" />
+        <link rel="stylesheet" href="register/register.css" />
+        <link rel="stylesheet" href="profile/profile.css" />
+        <link rel="stylesheet" href="exercisetracker/exercisetracker.css"/>
+        <link rel="stylesheet" href="calorietracker/calorietracker.css" />
+        <link rel="stylesheet" href="mealdetails/mealdetails.css" />
+        <link rel="stylesheet" href="favorites/favorites.css" />
+        <link rel="stylesheet" href="../css/ngDialog.css" />
+        <link rel="stylesheet" href="../css/ngDialog-theme-default.css" />
+        <link rel="shortcut icon" href="images/pageIcon.ico" />
+    </head>
+    <body ng-app="HealthyGobblerApp">
+        <div ng-controller="HealthyGobblerController">
+            <!--Navigation-->
+            <nav id="myNavBar" class="navbar navbar-fixed-top navbar-custom" role="navigation">
+                <div>
+                    <div class="navbar-header navbar-left">
+                        <a href="home/HomePage.html">
+                            <img id="logoImg" src="images/appName.png" />
+                        </a>
+
+                        <button class="btn btn-success navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="glyphicon glyphicon-menu-hamburger"></span>
+                        </button>
+                    </div>
+
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right navbar-right-custom">
+                            <li ng-hide="currentUser">
+                                <a class="navlinks" id="homeLink" href="home/HomePage.html"><span class="glyphicon glyphicon-home"></span>&nbsp;Home Page</a>
+                            </li>
+                            <li ng-show="currentUser">
+                                <a class="navlinks" id="profileLink" href="#profile"><span class="glyphicon glyphicon-user"></span>&nbsp;{{currentUser.firstname}}&nbsp;{{currentUser.lastname}}</a>
+                            </li>
+                            <li ng-show="currentUser">
+                                <a class="navlinks" id="calorieTrackerLink" href="#calorietracker"><span class="glyphicon glyphicon-scale"></span>&nbsp;Calorie Tracker</a>
+                            </li>
+                            <li ng-show="currentUser">
+                                <a class="navlinks" id="exerciseTrackerLink" href="#exercisetracker"><span class="glyphicon glyphicon-road"></span>&nbsp;Exercise Tracker</a>
+                            </li>
+                            <li ng-show="currentUser">
+                                <a class="navlinks" id="favoritesLink" href="#favorites"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;My Favorites</a>
+                            </li>
+
+                            <li class="dropdown" ng-show="currentUser">
+                                <a 
+                                   id="offButton"
+                                   href="" 
+                                   class="btn-danger dropdown-toggle" 
+                                   data-toggle="dropdown" 
+                                   role="button" 
+                                   aria-expanded="false">
+                                    <span class="glyphicon glyphicon-off"></span>
+                                </a>
+                                <ul class="dropdown-menu drop" role="menu">
+                                    <li style="text-align:center" ng-show="currentUser">
+                                        <button ng-click="logoutUser()" class="btn btn-danger logoutBtn" id="logoutBtn">
+                                            <span class="glyphicon glyphicon-off"></span>&nbsp;Logout
+                                        </button>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="view-animate-container">
+                <div class="view-animate" ng-view>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

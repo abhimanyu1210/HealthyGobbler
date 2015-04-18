@@ -1,0 +1,119 @@
+﻿.rowSearch{
+    text-align:center;
+}
+.searchContainer h2{
+    text-align:center;
+    font-family:'Arial Rounded MT';
+    font-size:40px;
+    font-weight:bold;
+}
+
+.rowSearch input{
+    font-family:'Arial Rounded MT';
+    font-size:17px;
+}
+
+.rowSearch button{
+    font-family:'Arial Rounded MT';
+    font-size:17px;
+    border-radius:50px;
+}
+
+#imagesReturned{
+    margin-top:10px;
+    height:150px;
+    width:150px;
+    border:2px solid black;
+}
+
+.searchResultsContainer a{
+    text-decoration: none;
+    font-family:'Arial Rounded MT';
+    font-size:15px;
+    text-align:center;
+}
+
+.searchResultsContainer{
+    width:90%;
+    margin:auto;
+}
+
+.resultsHead h2{
+    text-align:center;
+    font-family:'Arial Rounded MT';
+    font-size:40px;
+    font-weight:bold;
+}
+
+#imagesReturned:hover{
+    cursor:pointer;
+}
+
+#leftBtn{
+    text-align:center;
+    font-size:40px;
+    border-radius:50px;
+    -webkit-animation:animateLeft 0.5s ease-in-out infinite alternate;
+}
+
+#rightBtn{
+    text-align:center;
+    font-size:40px;
+    border-radius:50px;
+    -webkit-animation:animateRight 0.5s ease-in-out infinite alternate;
+}
+
+#leftBtn span:hover,#rightBtn span:hover{
+    cursor:pointer;
+}
+
+@-webkit-keyframes animateLeft{
+    0%   {left:0px; top:0px;}
+    100% {left:-5px; top:0px;}
+}
+
+@-webkit-keyframes animateRight{
+    0%   {left:0px; top:0px;}
+    100% {left:5px; top:0px;}
+}
+
+
+#arrows{
+    width:100%;
+}
+
+.myPagination{
+    width:100%;
+    margin:auto;
+}
+
+#resultsDiv{
+    text-align:center;
+    
+}
+
+#resultsDiv{
+    margin-top:10px;
+}
+
+#noResults{
+    margin-top:10px;
+    text-align:center;
+    font-family:'Arial Rounded MT';
+    font-size:15px;
+}
+
+#noResults label{
+    color:red;
+}
+
+.animate-enter, .animate-leave {
+    -webkit-transition: transform ease-in all;
+    -moz-transition: transform ease-in all;
+} 
+.animate-enter.animate-enter-active, .animate-leave {
+    transform: translateX(-100%);
+}
+.animate-leave.animate-leave-active, .animate-enter {
+    transform: translateX(100%);
+}

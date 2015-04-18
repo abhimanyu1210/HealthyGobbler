@@ -1,0 +1,21 @@
+﻿<div class="cookingInstructions">
+    <img class="mealImg" ng-src="{{Image}}" />
+    <table class="mealContents table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    <h3>
+                        Instructions
+                    </h3>
+                    
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="eachRowContent" ng-repeat="content in Contents track by $index">
+                <td>{{content}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

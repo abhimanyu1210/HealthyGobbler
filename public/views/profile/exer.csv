@@ -1,0 +1,37 @@
+Badminton,0.044
+Basketball,0.063
+Bicycling (5.5 mph),0.029
+Bicycling (9.5 mph),0.045
+Climbing hills (no load),0.055
+Climbing hills (with 9 lb. load),0.058
+Climbing hills (with 22 lb. load),0.064
+Cooking,0.022
+Dancing ballroom,0.023
+Dance Aerobic medium,0.046
+Dance Aerobic intense,0.061
+Golf,0.038
+Grocery shopping,0.028
+Jumping Rope (70 jumps per minute),0.074
+Jumping Rope (125 jumps per minute),0.08
+Jumping Rope (145 jumps per minute),0.089
+Mowing the lawn,0.051
+Racquetball,0.081
+Raking leaves,0.025
+Running (6-minute mile),0.115
+Running (8-minute mile),0.095
+Running (9-minute mile),0.087
+Sitting Still,0.009
+Skiing cross-country walking,0.065
+Skiing cross-country uphill,0.125
+Snowshoeing soft snow,0.075
+Squats,0.096
+Swimming crawl slow,0.058
+Swimming crawl fast,0.071
+Swimming breast stroke fast,0.074
+Table tennis,0.031
+Walking normal pace asphalt road,0.036
+Walking normal pace fields & hills,0.037
+Weeding,0.033
+Weight training free weights,0.039
+Weight training circuit training,0.042
+Volleyball,0.023

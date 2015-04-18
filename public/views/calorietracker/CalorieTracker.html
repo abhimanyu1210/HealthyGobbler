@@ -1,0 +1,52 @@
+﻿<div class="container well searchContainer">
+    <form>
+        <h2>Search Your Meal</h2>
+        <div class="row rowSearch">
+            <div class="col-sm-10">
+                <input required ng-model="searchInput" id="searchInpId" type="text" class="form-control" placeholder="Search Food Items Here (Eg: Apple-pie, Pizza, Tomato Soup)"/>
+            </div>
+            <div class="col-sm-2">
+                <button ng-click="searchFoodItem(searchInput)" id="searchBtnId" class="btn btn-success">
+                    <span class="glyphicon glyphicon-search"></span>&nbsp;Search
+                </button>
+            </div>
+        </div>
+        <div id="noResults" ng-hide="MealResults.length > 0">
+            <label>{{Err}}</label>
+        </div>
+    </form>
+</div>
+
+<div id="wrapperDiv">
+    <div id="searchResultsMain" class="row well searchResultsContainer" ng-show="MealResults.length > 0">
+        <div class="resultsHead">
+            <h2>Search Results</h2>
+            <div class="container myPagination">
+                <div class="col-md-6" id="leftBtn">
+                    <div>
+                        <span ng-class="prevPageDisabled()" class="glyphicon glyphicon-backward" ng-click="prevPage()"></span>
+                    </div>
+                </div>
+                <div class="col-md-6" id="rightBtn">
+                    <div>
+                        <span ng-class="nextPageDisabled()" class="glyphicon glyphicon-forward" ng-click="nextPage()"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>&nbsp;</div>
+        <div ng-animate="animate"
+             ng-show="meal.imageUrlsBySize.90 && meal.recipeName"
+             ng-repeat="meal in MealResults | offset: currentPage*itemsPerPage | limitTo: itemsPerPage"
+             class="col-md-4"
+             id="resultsDiv">
+            <div>
+                <img ng-click="goToMealDetails(meal)" ng-show="meal.imageUrlsBySize.90" id="imagesReturned" ng-src="{{meal.imageUrlsBySize.90}}" />
+            </div>
+            <div>
+                <a href="#mealDetails/{{meal.id}}">{{meal.recipeName}}</a>
+            </div>
+        </div>
+    </div>
+</div>
+

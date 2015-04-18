@@ -1,0 +1,36 @@
+﻿<div class="ngDialogClass">
+    <div>
+        <div class="userNameClass">
+            <h2>
+                <img id="userDetailsImg" src="images/userdetails.png" />&nbsp;{{OtherUser.firstname}}&nbsp;{{OtherUser.lastname}}
+            </h2>
+        </div>
+        <div>&nbsp;</div>
+        <div class="container otherUserInfoCard">
+            <div class="otherUserRow">
+                <input type="text" readonly value="{{OtherUser.email}}" />
+            </div>
+            <div class="otherUserRow">
+                <input type="text" readonly value="{{OtherUser.age}} years old" />
+            </div>
+            <div class="otherUserRow">
+                <input type="text" readonly value="{{OtherUser.heightfeet}}.{{OtherUser.heightinches}} ft" />
+            </div>
+            <div class="otherUserRow">
+                <input type="text" readonly value="{{OtherUser.weight}} kgs" />
+            </div>
+            <div class="otherUserRow">
+                <input type="text" readonly value="{{OtherUser.targetcaloriesperday}} target calories / day" />
+            </div>
+        </div>
+        <div>&nbsp;</div>
+        <div class="buttonsFollow">
+            <button ng-show="(following == 'no')" ng-click="closeThisDialog({action:'follow',username:OtherUser.username})" id="followBtn" class="btn btn-success">
+                <span class="glyphicon glyphicon-sunglasses"></span>&nbsp;Follow
+            </button>
+            <button ng-show="(following == 'yes')" ng-click="closeThisDialog({action:'unfollow',username:OtherUser.username})" id="unFollowBtn" class="btn btn-danger">
+                <span class="glyphicon glyphicon-eye-close"></span>&nbsp;Stop Following
+            </button>
+        </div>
+    </div>
+</div>

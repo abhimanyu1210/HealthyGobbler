@@ -1,0 +1,61 @@
+﻿.exerciseTracker{
+    width:60%;
+}
+
+.exerciseTracker h2{
+    text-align:center;
+    font-family:'Arial Rounded MT';
+    font-size:40px;
+    font-weight:bold;
+    border-bottom:3px solid black;
+    padding:10px;
+}
+
+.exerClass label{
+    text-align:center;
+    font-family:'Arial Rounded MT';
+    font-size:17px;
+    float:right;
+}
+
+.buttonClass{
+    text-align:center;
+}
+
+.buttonClass button{
+    font-family:'Arial Rounded MT';
+    font-size:15px;
+    border-radius:50px;
+}
+
+.errorClass{
+    text-align:center;
+    font-family:'Arial Rounded MT';
+    font-size:12px;
+    color:red;
+}
+
+.caloriesBurned{
+    text-align:center;
+    font-family:'Arial Rounded MT';
+    color:green;
+}
+
+.caloriesBurned label{
+    font-family:'Arial Rounded MT';
+    font-size:100px;
+    font-weight:bold;
+}
+
+.resultClass{
+    width:50%;
+}
+
+.resultClass h2{
+    text-align:center;
+    font-family:'Arial Rounded MT';
+    font-size:40px;
+    font-weight:bold;
+    border-bottom:3px solid black;
+    padding:10px;
+}

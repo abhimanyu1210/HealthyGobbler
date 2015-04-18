@@ -1,0 +1,40 @@
+﻿<div class="well favouritesMain">
+    <h2>My Favorites</h2>
+
+    <div id="noFavorites" ng-show="MealResults.length == 0">
+        <label>You don't have any favorites logged.</label>
+    </div>
+
+    <div class="results" ng-show="MealResults.length > 0">
+        <table class="table table-hover table-responsive">
+            <thead>
+                <tr>
+                    <td>Meal Snapshot</td>
+                    <td>Meal Name</td>
+                    <td>Meal Calories</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="Meal in MealResults">
+                    <td>
+                        <img id="mealImgId" class="mealImg" ng-src="{{Meal.image}}">
+                    </td>
+                    <td>
+                        <a href="#mealDetails/{{Meal.mealExternalId}}"><label id="mealName">{{Meal.mealName}}</label></a>
+                    </td>
+                    <td>
+                        <label id="mealCalories">{{Meal.calories}}</label>
+                    </td>
+                    <td>
+                        <button id="btnId" ng-click="openCookingInstructions(Meal)" class="btn btn-info">
+                            <span class="glyphicon glyphicon-cutlery"></span>&nbsp;Open Cooking Instructions
+                        </button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>

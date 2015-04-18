@@ -1,0 +1,169 @@
+﻿body {
+    /*background:url(../images/profile.jpg) fixed center;*/
+    background-color:#d8dfea;
+    background-size:cover;
+    height:100%;
+}
+
+.navbar-custom{
+    background-color:#8b9dc3;
+    opacity:0.9;
+    transition: opacity ease-in 0.5s;
+}
+
+.navbar-custom:hover{
+    opacity:1;
+}
+
+#showprofileId{
+    margin-bottom:20px;
+}
+
+.navbar-right-custom{
+    font-family:'Arial Rounded MT';
+    margin-right:10px;
+}
+
+.navlinks{
+    margin-right:5px;
+    margin-top:3px;
+    font-size:15px;
+    color:black;
+    transition:transform ease-in-out 0.3s;
+    background-color:Highlight;
+    border-radius:50px;
+}
+
+.drop{
+    background-color:#d8dfea;
+}
+
+.navlinks:hover{
+    transform:translateX(-2px);
+
+}
+
+#offButton{
+    margin-top:2px;
+    border-radius:75px;
+    font-size:18px;
+    opacity:1;
+}
+
+.loginDiv{
+    float:left;
+    width:50%;
+    border-right:5px dashed grey;
+    margin-right:10px;
+    font-family:'Arial Rounded MT';
+    padding:10px;
+}
+
+.registerDiv {
+    padding:10px;
+}
+
+.loginDiv h2{
+    text-align:center;
+    font-family:'Arial Rounded MT';
+    font-size:50px;
+    font-weight:bold;
+}
+
+
+.registerDiv h2{
+    text-align:center;
+    font-family:'Arial Rounded MT';
+    font-size:50px;
+    font-weight:bold;
+}
+
+.loginBtn{
+    display:block;
+    margin:auto;
+    font-size:20px;
+    margin-top:10px;
+    font-family:'Arial Rounded MT';
+    border-radius:50px;
+}
+
+.loginDiv label{
+    font-family:'Arial Rounded MT';
+    font-size:18px;
+}
+
+.registerDiv p{
+    font-family:'Arial Rounded MT';
+    font-size:18px;
+}
+
+.logoutBtn{
+    font-family:'Arial Rounded MT';
+    font-size:15px;
+    transition:transform ease-in-out 0.2s;
+    width:100%;
+}
+
+.loginErr label{
+    font-family:'Arial Rounded MT';
+    font-size:13px;
+    color:red;
+}
+
+#logoImg{
+    height:56px;
+}
+
+
+/*----------------------------------------*/
+
+.view-animate-container {
+  height:100% !important;
+  overflow:hidden;
+}
+
+.view-animate {
+  margin-top:80px;
+}
+
+.view-animate.ng-enter, .view-animate.ng-leave {
+  -webkit-transition:opacity ease-in-out 0.5s;
+  transition:opacity ease-in-out 0.5s;
+  position:absolute;
+  width:100%;
+}
+
+.view-animate.ng-enter {
+  opacity:0.6;
+}
+.view-animate.ng-enter.ng-enter-active {
+  opacity:1;
+}
+.view-animate.ng-leave.ng-leave-active {
+  opacity:0;
+}
+
+/* When the screen is for phone*/
+@media screen and (max-width: 800px){
+    .loginDiv{
+        float:none;
+        width:100%;
+        border-right:0px;
+        margin-bottom:30px;
+    }
+    .registerDiv{
+        border-top:5px dashed grey;
+    }
+    well{
+        padding:30px;
+    }
+}
+
+.dashboardDropDown{
+    font-family:'Arial Rounded MT';
+    font-size:17px;
+}
+
+.dropdown{
+    text-align:center;
+}

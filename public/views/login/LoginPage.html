@@ -1,0 +1,39 @@
+﻿<body>
+    <div class="container well">
+        <div class="loginDiv">
+            <h2>Login</h2>
+            <div>&nbsp;</div>
+            <div class="loginErr" ng-show="loginErr">
+                <label>
+                    {{loginErr}}
+                </label>
+            </div>
+
+            <form>
+                <label for="userLogin">Username:</label>
+                <input ng-model="User.username" class="form-control" id="userLogin" type="text" placeholder="Username" />
+                <br />
+                <label for="userpwd">Password:</label>
+                <input ng-model="User.password" class="form-control" id="userpwd" type="password" placeholder="Password" />
+
+                <button ng-click="loginUser(User)" class="btn btn-success loginBtn">
+                    <span class="glyphicon glyphicon-user"></span>&nbsp;Login
+                </button>
+
+            </form>
+        </div>
+
+        <div class="registerDiv">
+            <h2>Not A Member?</h2>
+            <div>&nbsp;</div>
+            <p>
+                If you are not a member, you can register by clicking on 'Register' button below.
+            </p>
+            <form>
+                <button ng-click="registerBtn()" class="btn btn-info loginBtn">
+                    <span class="glyphicon glyphicon-pencil"></span>&nbsp;Register
+                </button>
+            </form>
+        </div>
+    </div>
+</body>

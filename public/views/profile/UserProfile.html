@@ -1,0 +1,405 @@
+﻿<div id="dashboard">
+    <div id="showprofileId" class="rowProfile">
+        <button ng-click="showProfileCard();" class="btn btn-success">
+            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;Show Profile Details
+        </button>
+    </div>
+    <div id="userProfileDiv" class="well userDetails">
+        <div class="rowProfile">
+            <button ng-click="hideProfileCard();" class="btn btn-default">
+                <span class="glyphicon glyphicon-eye-close"></span>&nbsp;Hide Profile Details
+            </button>
+        </div>
+        <div class="userNameClass">
+            <h2>
+                <img id="userDetailsImg" src="images/userdetails.png" />&nbsp;{{User.firstname}}&nbsp;{{User.lastname}}
+                <button id="btnEdit" ng-click="editUser()" class="btn btn-info btnEditSave">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+                <button id="btnSave" ng-click="saveUser(User)" class="btn btn-danger btnEditSave">
+                    <span class="glyphicon glyphicon-save"></span>
+                </button>
+            </h2>
+        </div>
+        <div class="infocard">
+            <form id="readOnlyDisplay">
+                <div class="rowProfile">                  
+                    <input type="text" readonly value="{{User.email}}" />
+                </div>
+                <div class="rowProfile">
+                    <input type="text" readonly value="{{User.age}} years old" />
+                </div>
+                <div class="rowProfile">
+                    <input type="text" readonly value="{{User.heightfeet}}.{{User.heightinches}} ft" />
+                </div>
+                <div class="rowProfile">
+                    <input type="text" readonly value="{{User.weight}} kgs" />
+                </div>
+                <div>&nbsp;</div>
+                <button id="btnCloseAccnt" ng-click="deactivateAccount()" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;De-activate Account
+                </button>
+            </form>
+        </div>
+        <form id="editOnlyDisplay">
+            <label for="email">Email: </label>
+            <input type="text" required ng-model="User.email" class="form-control" />
+            <br />
+            <label for="email">Age: </label>
+            <input type="number" required ng-model="User.age" class="form-control" />
+            <br />
+            <label for="email">Height(feet and inches): </label>
+            <input type="number" required ng-model="User.heightfeet" class="form-control" />
+            <input type="number" required ng-model="User.heightinches" class="form-control" />
+            <br />
+            <label for="email">Weight(kgs): </label>
+            <input type="number" required ng-model="User.weight" class="form-control" />
+
+            <br />
+            <label for="lifestyle">Physical Activity Level:</label><br />
+            <select name="lifestyle" id="lifestyle" class="form-control">
+                <option selected="selected">Sedentary</option>
+                <option>Lightly Active</option>
+                <option>Moderately Active</option>
+                <option>Highly Active</option>
+            </select><br />
+        </form>
+    </div>
+
+    <!--Calorie Progress-->
+    <div id="calories" class="container well calorieProgress">
+        <h2>
+            <span class="glyphicon glyphicon-scale"></span>&nbsp;Calorie Tracker
+        </h2>
+        <div id="changeDate">
+            Change Date<input id="datePickerChange" type="date" class="form-control" />
+        </div>
+        <div>&nbsp;</div>
+        <!--Progress Bar Showing Daily Calorie Left-->
+
+        <div class="caloriesRemaining">
+            <label>{{CaloriesRemaining}}</label>&nbsp;calories remaining
+        </div>
+        <div id="goToActivity">
+            <span id="onClickGoToActivity" class="glyphicon glyphicon-tasks"></span>&nbsp;<p id="seeMyActivity">See Activity Log</p>
+        </div>
+
+        <div>&nbsp;</div>
+        <div id="mycalorieprogress">
+            <div id="progressBar">
+            </div>
+        </div>
+
+        <div>&nbsp;</div>
+
+        <div class="row calorieDetailsClass ">
+            <div class="col-md-3">
+                <div>
+                    <label class="labelHead">Recommended Intake</label>
+                </div>
+                <label class="labelVal">{{User.targetcaloriesperday}} calories</label>
+            </div>
+            <div class="col-md-3">
+                <div>
+                    <label class="labelHead">Calories Consumed</label>
+                </div>
+                <label class="labelVal">{{UserCalories}} calories</label>
+            </div>
+            <div class="col-md-3">
+                <div>
+                    <label class="labelHead">Calories Burned</label>
+                </div>
+                <label class="labelVal">{{CaloriesBurned}} calories</label>
+            </div>
+            <div class="col-md-3">
+                <div>
+                    <label class="labelHeadOverate">Overeaten Calories</label>
+                </div>
+                    <label class="labelVal">{{Overate}} calories</label>
+            </div>
+        </div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div class="row" id="logMealDiv">
+            <div class="col-md-4">
+                <button ng-click="goToCalorieTracker()" class="btn btn-info">
+                    <span class="glyphicon glyphicon-dashboard"></span>&nbsp;Log My Meal
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button ng-click="openFavorites()" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;My Favorites
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button ng-click="openExerciseTracker()" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-road"></span>&nbsp;Log My Workout
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="activityLog" class="container-fluid well userActivity">
+        <ul class="tabs">
+            <li class="tab-link current" data-tab="tab-1">
+                <span class="glyphicon glyphicon-tasks"></span>&nbsp;Activity Feed
+            </li>
+            <li class="tab-link" data-tab="tab-2">
+                <span class="glyphicon glyphicon-sunglasses"></span>&nbsp;Following
+            </li>
+        </ul>
+
+        <!--Activity Feed-->
+        <div id="tab-1" class="tab-content current">
+            <div id="noPersonalActivities" ng-show="(Activities.length == 0) && (MyComments.length == 0) && (OtherComments.length == 0)">
+                <label>
+                    No activities to show
+                </label>
+            </div>
+
+            <div ng-show="(Activities.length > 0) || (MyComments.length > 0) || (OtherComments.length > 0)">
+                <div id="myActivities">
+                    <h2><span class="glyphicon glyphicon-th"></span> News Feed</h2>
+                </div>
+                <div>&nbsp;</div>
+
+                <div id="mealsAndLikes" ng-show="Activities" class="container">
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    My News Feed
+                                </th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="eachActivity in Activities | orderBy:'-logDate'">
+                                <td>
+                                    <div id="userNameHolder">
+                                        <a ng-click="openOtherUserDialog(eachActivity.username)" href=""><span class="glyphicon glyphicon-user"></span> {{eachActivity.username}}</a>
+                                    </div>
+                                    <div ng-show="eachActivity.type == 'meal'" id="mealHolder">
+                                        <span class="glyphicon glyphicon-cutlery"></span>
+                                        Logged <a ng-click="goToMealDetails(eachActivity.mealExternalId)" href="">{{eachActivity.mealName}}</a> as meal.
+                                    </div>
+                                    <div ng-show="eachActivity.type == 'like'" id="likesHolder">
+                                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                                        Enjoyed my <a ng-click="goToMealDetails(eachActivity.mealExternalId)" href="">{{eachActivity.mealName}}.</a>
+                                    </div>
+                                    <div ng-show="eachActivity.type == 'excercise'" id="likesHolder">
+                                        <span class="glyphicon glyphicon-fire"></span>
+                                        <strong>{{eachActivity.mealName}}</strong> helped you burn <strong>{{eachActivity.calories}}</strong> calories.
+                                    </div>
+                                    <div>&nbsp;</div><div>&nbsp;</div>
+                                </td>
+                                <td class="logDate">
+                                    on&nbsp;{{eachActivity.logDate  | date:"MM/dd/yyyy @ h:mma"}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="mealsAndLikes" ng-show="MyComments" class="container">
+                    <table class="table table-condensed table-hover">
+                        <tbody>
+                            <tr ng-repeat="eachComment in MyComments | orderBy: '-creationDate'" ng-show="MyComments">
+                                <td class="commentText">
+                                    <div id="userNameHolder">
+                                        <a ng-click="openOtherUserDialog(eachComment.username)" href=""><span class="glyphicon glyphicon-user"></span>&nbsp;{{eachComment.username}}</a>
+                                    </div>
+                                    <div id="mealHolder">
+                                        <span class="glyphicon glyphicon-comment"></span>
+                                        Commented <strong>"{{eachComment.comment}}"</strong> on
+                                        <a ng-click="goToMealDetails(eachComment.mealExternalId)" href="">
+                                            {{eachComment.mealName}}.
+                                        </a>
+                                    </div>
+                                    <div>&nbsp;</div><div>&nbsp;</div>
+                                </td>
+                                <td class="logDate">
+                                    on&nbsp;{{eachComment.creationDate  | date:"MM/dd/yyyy @ h:mma"}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>&nbsp;</div>
+                <div id="mealsAndLikes" ng-show="OtherComments.length > 0 || OtherActivities.length > 0" class="container">
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                            <tr>
+                                <th>See What Others Are Doing</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="eachComment in OtherComments | orderBy:'-creationDate'">
+                                <td class="commentText">
+                                    <div id="userNameHolder">
+                                        <a ng-click="openOtherUserDialog(eachComment.username)" href="">
+                                            <span class="glyphicon glyphicon-user"></span>&nbsp;{{eachComment.username}}
+                                        </a>
+                                    </div>
+                                    <div id="mealHolder">
+                                        <span class="glyphicon glyphicon-comment"></span>
+                                        Commented <strong>"{{eachComment.comment}}"</strong> on
+                                        <a ng-click="goToMealDetails(eachComment.mealExternalId)" href="">
+                                            {{eachComment.mealName}}.
+                                        </a>
+                                    </div>
+                                    <div>&nbsp;</div><div>&nbsp;</div>
+                                </td>
+                                <td class="logDate">
+                                    on&nbsp;{{eachComment.creationDate  | date:"MM/dd/yyyy @ h:mma"}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="mealsAndLikes" ng-show="OtherActivities.length > 0" class="container">
+                    <table class="table table-condensed table-hover">
+                        <tbody>
+                            <tr ng-repeat="eachActivity in OtherActivities | orderBy:'-logDate'" ng-show="eachActivity.type == 'like' || eachActivity.type == 'excercise'">
+                                <td>
+                                    <div id="userNameHolder">
+                                        <a ng-click="openOtherUserDialog(eachActivity.username)" href=""><span class="glyphicon glyphicon-user"></span> {{eachActivity.username}}</a>
+                                    </div>
+                                    <div ng-show="eachActivity.type == 'like'" id="likesHolder">
+                                        <span class="glyphicon glyphicon-thumbs-up"></span>
+                                        Enjoyed my <a ng-click="goToMealDetails(eachActivity.mealExternalId)" href="">{{eachActivity.mealName}}.</a>
+                                    </div>
+                                    <div ng-show="eachActivity.type == 'excercise'" id="likesHolder">
+                                        <span class="glyphicon glyphicon-fire"></span>
+                                        <strong>{{eachActivity.mealName}}</strong> helped <strong>{{eachActivity.username}}</strong> burn <strong>{{eachActivity.calories}}</strong> calories.
+                                    </div>
+                                    <div>&nbsp;</div><div>&nbsp;</div>
+                                </td>
+                                <td class="logDate">
+                                    on&nbsp;{{eachActivity.logDate  | date:"MM/dd/yyyy @ h:mma"}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <!--Following-->
+        <div id="tab-2" class="tab-content">
+
+            <!--Search for users by username-->
+            <div class="searchUserDiv">
+                <div>
+                    <h2><span class="glyphicon glyphicon-search"></span>&nbsp;Search For Users</h2>
+                </div>
+                <div>&nbsp;</div>
+                <div class="row searchInputClass">
+                    <form>
+                        <div class="col-md-7">
+                            <input id="userSearches" type="text" required ng-model="userSearchInput" class="form-control" placeholder="Enter a user name to search" />
+                        </div>
+                        <div class="col-md-3">
+                            <select id="searchBy" class="form-control" required>
+                                <option selected="selected">Search By Username</option>
+                                <option>Search By Name</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button ng-click="searchUser(userSearchInput)" class="btn btn-info">
+                                <span class="glyphicon glyphicon-search"></span>&nbsp;Search Username
+                            </button>
+                        </div>
+                    </form>
+                    <div>&nbsp;</div>
+                </div>
+                <div>&nbsp;</div>
+                <div class="following" ng-show="UserSearchResults.length > 0">
+                    <table class="table table-condensed otherUsersTable">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Name</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="searchedUser in UserSearchResults">
+                                <td>
+                                    <div class="otherUsername">
+                                        <a ng-click="openOtherUserDialog(searchedUser.username)" href=""><span class="glyphicon glyphicon-user"></span>&nbsp;{{searchedUser.username}}</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="otherUsername">
+                                        {{searchedUser.firstname}}&nbsp;{{searchedUser.lastname}}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="btnFollow" ng-show="searchedUser.username != User.username">
+                                        <button ng-click="follow(searchedUser.username)" class="btn btn-success">
+                                            <span class="glyphicon glyphicon-sunglasses"></span>&nbsp;Follow
+                                        </button>
+                                    </div>
+                                    <div class="btnFollow" ng-hide="searchedUser.username != User.username">
+                                        <button disabled ng-click="follow(searchedUser.username)" class="btn btn-danger">
+                                            <span class="glyphicon glyphicon-sunglasses"></span>&nbsp;You
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="following" ng-hide="UserSearchResults.length > 0">
+                    <label>No results to show yet</label>
+                </div>
+            </div>
+
+            <div>&nbsp;</div><div>&nbsp;</div><div>&nbsp;</div>
+
+            <div id="followingHead">
+                <h2><span class="glyphicon glyphicon-sunglasses"></span>&nbsp;Following</h2>
+            </div>
+            <div>&nbsp;</div>
+            <div class="noFollowing" ng-hide="User.following">
+                <label>
+                    You are not following any one yet
+                </label>
+            </div>
+            <div class="following" ng-show="User.following">
+                <table class="table table-condensed table-hover otherUsersTable">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="otherUser in User.following">
+                            <td>
+                                <div class="otherUsername">
+                                    <a ng-click="openOtherUserDialog(otherUser)" href=""><span class="glyphicon glyphicon-user"></span>&nbsp;{{otherUser}}</a>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="unfollowDiv">
+                                    <button ng-click="stopFollowing(otherUser)" class="btn btn-danger">
+                                        <span class="glyphicon glyphicon-eye-close"></span>&nbsp;Stop Following
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container goToTop">
+        <button ng-click="topOfPage()" class="btn btn-primary">
+            <span class="glyphicon glyphicon-circle-arrow-up"></span>&nbsp;
+        </button>
+    </div>
+</div>

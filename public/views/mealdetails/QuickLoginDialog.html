@@ -1,0 +1,43 @@
+﻿<div class="quickLogin">
+    <h2><span class="glyphicon glyphicon-lock"></span>&nbsp;Quick Login</h2>
+    <div>&nbsp;</div>
+    <form>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="myUsername">Username:</label>
+            </div>
+            <div class="col-md-9">
+                <input ng-model="myUsername" class="form-control" type="text" id="myUsername" required placeholder="Enter your Username">
+            </div>
+        </div>
+        <div>&nbsp;</div>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="myPwd">Password:</label>
+            </div>
+
+            <div class="col-md-9">
+                <input ng-model="myPwd" class="form-control" type="password" id="myPwd" required placeholder="Enter your password here">
+            </div>
+        </div>
+        <div>&nbsp;</div>
+        <div class="quickLoginBtn">
+            <button class="btn btn-success" ng-click="closeThisDialog({action:'login',username:myUsername, password:myPwd})">
+                <span class="glyphicon glyphicon-log-in"></span>&nbsp;Login
+            </button>
+        </div>
+    </form>
+</div>
+<div>&nbsp;</div>
+<div class="notAmember">
+    <h2>Not A Member?</h2>
+    <div>&nbsp;</div>
+    <p>
+        If you are not a member, you can register by clicking on 'Register' button below.
+    </p>
+    <form>
+        <button ng-click="closeThisDialog({action:'register'})" class="btn btn-info quickLoginBtn">
+            <span class="glyphicon glyphicon-pencil"></span>&nbsp;Register
+        </button>
+    </form>
+</div>

@@ -1,0 +1,61 @@
+﻿<div class="well container exerciseTracker">
+    <h2><span class="glyphicon glyphicon-road"></span> Exercise Tracker</h2>
+    <div>&nbsp;</div>
+    <form>
+        <div class="row exerClass">
+            <div class="col-md-5">
+                <label>Workout Type:</label>
+            </div>
+            <div class="col-md-6">
+                <select id="myDropDown" class="form-control" ng-model="chosenExer" required>
+                    <option ng-repeat="exer in AllExercises" value="{{exer.exervalue}}">
+                        {{exer.exername}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-1">&nbsp;</div>
+        </div>
+        <div>&nbsp;</div>
+        <div class="row exerClass">
+            <div class="col-md-5">
+                <label>Workout Length:</label>
+            </div>
+            <div class="col-md-6">
+                <input ng-model="minutes" type="number" min="1" class="form-control" placeholder="Length of work-out in minutes"/>
+            </div>
+            <div class="col-md-1">&nbsp;</div>
+        </div>
+        <div>&nbsp;</div>
+        <div class="row exerClass">
+            <div class="col-md-5">
+                <label>Choose Date:</label>
+            </div>
+            <div class="col-md-6">
+                <input ng-model="dateInp" type="date" class="form-control" required/>
+            </div>
+            <div class="col-md-1">&nbsp;</div>
+        </div>
+        <div>&nbsp;</div>
+        <div class="row errorClass">
+            <label>{{Err}}</label>
+        </div>
+        <div>&nbsp;</div>
+        <div class="buttonClass">
+            <button ng-click="calculateCalories();" class="btn btn-primary">
+                <span class="glyphicon glyphicon-calendar"></span>&nbsp;Calculate Calories
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class="well container resultClass" ng-show="CaloriesBurned">
+    <h2><span class="glyphicon glyphicon-fire"></span>&nbsp;You Burned</h2>
+    <div class="caloriesBurned">
+        <label id="calsBurned"></label>calories
+    </div>
+    <div class="buttonClass">
+        <button ng-click="logCalories();" class="btn btn-success">
+            <span class="glyphicon glyphicon-flag"></span>&nbsp;Log Workout
+        </button>
+    </div>
+</div>
